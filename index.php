@@ -1,3 +1,9 @@
+<?php
+    
+    // include 'functions/functions.php';
+    
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,13 +11,6 @@
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body>
-        
-        <?php
-        
-        // include 'inc/functions.php';
-        
-        
-        ?>
         
 
     </body>

@@ -16,7 +16,10 @@
             echo "<br>";
             getHand();
             
-            
+            include 'functions/function2.php';
+            echo "<hr>";
+            $players = displayHands(getDeck());
+            displayWinners($players);
             
         ?>
     </head>

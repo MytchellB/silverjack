@@ -1,4 +1,7 @@
 <?php
+    session_start();
+    $startSec = microtime(true);
+    
     function getDeck() {
         $deck = array();
         $suits = array("clubs","spades","hearts","diamonds");
@@ -78,5 +81,39 @@
             echo $winnerTotal . " points!";
         }
         echo "<br>";
+    }
+    
+    function getCurrentSec() {
+        $currentSec = microtime(true);
+        return $currentSec;
+    }
+    
+    function displayElapsedTime() {
+        global $startSec;
+        echo "Elapsed Time: ";
+        $elapsedTime = getCurrentSec() - $startSec;
+        echo $elapsedTime;
+        echo "<br>";
+        
+        if (!isset($_SESSION["avgSec"])) {
+            $_SESSION["avgSec"] = $elapsedTime;
+        }
+        else {
+            $_SESSION["avgSec"] += $elapsedTime;
+        }
+        
+        if (!isset($_SESSION["gameCount"])) {
+            $_SESSION["gameCount"] = 1;
+        }
+        else {
+            $_SESSION["gameCount"]++;
+        }
+        
+        echo "Avg Elapsed Time: ";
+        echo $_SESSION["avgSec"]/$_SESSION["gameCount"];
+        echo "<br>";
+        
+        echo "# of games played: ";
+        echo $_SESSION["gameCount"];
     }
 ?>

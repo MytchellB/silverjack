@@ -83,15 +83,10 @@
         echo "<br>";
     }
     
-    function getCurrentSec() {
-        $currentSec = microtime(true);
-        return $currentSec;
-    }
-    
     function displayElapsedTime() {
         global $startSec;
         echo "Elapsed Time: ";
-        $elapsedTime = getCurrentSec() - $startSec;
+        $elapsedTime = microtime(true) - $startSec;
         echo $elapsedTime;
         echo "<br>";
         

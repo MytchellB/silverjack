@@ -22,6 +22,12 @@
             displayWinners($players);
             
         ?>
+        
+        <hr>
+        
+        <div id="elapsedTime">
+            <?= displayElapsedTime(); ?>
+        </div>
     </head>
     <body>
         

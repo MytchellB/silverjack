@@ -16,13 +16,15 @@
     }
 
     function displayHands($deck) {
-        $totalPoints = array();
+        $randInd = range(0, 3);
         $names = array("Mytchell", "Jorge", "Conner", "Lexi");
         $players = array("Mytchell" => 0, "Jorge" => 0, "Conner" => 0, "Lexi" => 0);
-
+        
+        shuffle($randInd);
+        
         for ($i = 0; $i < 4; $i++) {
             $playerTotal = 0;
-            echo $names[$i];
+            echo $names[$randInd[$i]];
             while ($playerTotal <= 35) {
                 shuffle($deck);
                 $card = array_pop($deck);
@@ -31,11 +33,10 @@
                 echo "<img src='cards/$card_suit/" . $card_val . ".png'>";
                 $playerTotal += $card_val;
             }
-            echo $playerTotal;
-            echo "<br>";
-            $players[$names[$i]] = $playerTotal;
+            $players[$names[$randInd[$i]]] = $playerTotal;
+            echo $players[$names[$randInd[$i]]] . "<br>";
         }
-
+        
         return $players;
     }
 

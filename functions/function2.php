@@ -1,25 +1,25 @@
 <?php
     session_start();
     $startSec = microtime(true);
-    
+
     function getDeck() {
         $deck = array();
         $suits = array("clubs","spades","hearts","diamonds");
-    
+
         for ($i = 0; $i < 4; $i++){
             for ($u = 1; $u <= 13; $u++){
                 $deck[] = $suits[$i] . " " . $u;
             }
         }
-        
+
         return $deck;
     }
-    
+
     function displayHands($deck) {
         $totalPoints = array();
         $names = array("Mytchell", "Jorge", "Conner", "Lexi");
         $players = array("Mytchell" => 0, "Jorge" => 0, "Conner" => 0, "Lexi" => 0);
-        
+
         for ($i = 0; $i < 4; $i++) {
             $playerTotal = 0;
             echo $names[$i];
@@ -35,10 +35,10 @@
             echo "<br>";
             $players[$names[$i]] = $playerTotal;
         }
-        
+
         return $players;
     }
-    
+
     function displayWinners($players) {
         $winners = array();
         $check = false;
@@ -48,13 +48,19 @@
                 break;
             }
         }
-        
+
         if (!$check) {
             $min = min($players);
         } else {
             $min = 42;
         }
-        
+
+        foreach($players as $key => $value) {
+            if ($value >= $min && $value <= 42) {
+                $min = $value;
+            }
+        }
+
         $winnerTotal = 0;
         foreach($players as $key => $value) {
             if ($min == $value && $min <= 42) {
@@ -64,7 +70,7 @@
                 $winnerTotal += $value;
             }
         }
-        
+
         if (count($winners) == 0) {
             echo "Nobody wins";
         }
@@ -82,32 +88,32 @@
         }
         echo "<br>";
     }
-    
+
     function displayElapsedTime() {
         global $startSec;
         echo "Elapsed Time: ";
         $elapsedTime = microtime(true) - $startSec;
         echo $elapsedTime;
         echo "<br>";
-        
+
         if (!isset($_SESSION["avgSec"])) {
             $_SESSION["avgSec"] = $elapsedTime;
         }
         else {
             $_SESSION["avgSec"] += $elapsedTime;
         }
-        
+
         if (!isset($_SESSION["gameCount"])) {
             $_SESSION["gameCount"] = 1;
         }
         else {
             $_SESSION["gameCount"]++;
         }
-        
+
         echo "Avg Elapsed Time: ";
         echo $_SESSION["avgSec"]/$_SESSION["gameCount"];
         echo "<br>";
-        
+
         echo "# of games played: ";
         echo $_SESSION["gameCount"];
     }

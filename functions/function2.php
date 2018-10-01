@@ -17,14 +17,37 @@
 
     function displayHands($deck) {
         $randInd = range(0, 3);
-        $names = array("Mytchell", "Jorge", "Conner", "Lexi");
-        $players = array("Mytchell" => 0, "Jorge" => 0, "Conner" => 0, "Lexi" => 0);
+        $names = array("Player 1: Sophisticated Moose", "Player 2: Fancy Bear", "Player 3: Derped Unicorn", "Player 4: Cool Spaceman");
+        $players = array("Player 1: Sohpisticated Moose" => 0, "Player 2: Fancy Bear" => 0, "Player 3: Derped Unicorn" => 0, "Player 4: Cool Spaceman" => 0);
         
         shuffle($randInd);
         
         for ($i = 0; $i < 4; $i++) {
             $playerTotal = 0;
-            echo $names[$randInd[$i]];
+            if ($names[$randInd[$i]] == "Player 1: Sophisticated Moose") {
+                echo "<div class='p1'>
+                <img class='profile' src='img/moose.png' alt='Moose'>
+                <h3>Player 1:Sophisticated Moose</h3>
+            </div>";
+            }
+            else if ($names[$randInd[$i]] == "Player 2: Fancy Bear") {
+                echo "<div class='p2'>
+                <img class='profile' src='img/bear.png' alt='Bear'>
+                <h3>Player 2:Fancy Bear</h3>
+            </div>";
+            }
+            else if ($names[$randInd[$i]] == "Player 3: Derped Unicorn") {
+                echo "<div class='p3'>
+                <img class='profile' src='img/unicorn.png' alt='Unicorn'>
+                <h3>Player 3:Derped Unicorn</h3>
+            </div>";
+            }
+            else {
+                echo "<div class='p4'>
+                <img class='profile' src='img/spaceman.png' alt='Spaceman'>
+                <h3>Player 4:Cool Spaceman</h3>
+            </div>";
+            }
             while ($playerTotal <= 35) {
                 shuffle($deck);
                 $card = array_pop($deck);
@@ -77,24 +100,24 @@
         }
         else {
             if (count($winners) == 1) {
-                echo $winners[0] . " wins ";
+                echo "<h3>" . $winners[0] . " wins </h3>";
             }
             else {
                 for ($i = 0; $i < count($winners)-1; $i++) {
-                    echo $winners[$i] . ", ";
+                    echo "<h3>" . $winners[$i] . "," . "</h3>";
                 }
-                echo $winners[count($winners)-1] . " win ";
+                echo "<h3>" . $winners[count($winners)-1] . " win ";
             }
-            echo $winnerTotal . " points!";
+            echo "<h3>" . $winnerTotal . " points!</h3>";
         }
         echo "<br>";
     }
 
     function displayElapsedTime() {
         global $startSec;
-        echo "Elapsed Time: ";
+        echo "<h3>Elapsed Time: </h3>";
         $elapsedTime = microtime(true) - $startSec;
-        echo $elapsedTime;
+        echo "<h3>$elapsedTime</h3>";
         echo "<br>";
 
         if (!isset($_SESSION["avgSec"])) {
@@ -111,11 +134,11 @@
             $_SESSION["gameCount"]++;
         }
 
-        echo "Avg Elapsed Time: ";
-        echo $_SESSION["avgSec"]/$_SESSION["gameCount"];
+        echo "<h3>Avg Elapsed Time: </h3>";
+        echo "<h3>" . $_SESSION["avgSec"]/$_SESSION["gameCount"] . "</h3>";
         echo "<br>";
 
-        echo "# of games played: ";
-        echo $_SESSION["gameCount"];
+        echo "<h3># of games played: </h3>";
+        echo "<h3>" . $_SESSION["gameCount"] . "</h3>";
     }
 ?>

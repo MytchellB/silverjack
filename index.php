@@ -1,21 +1,7 @@
 <?php
-    
-            include 'functions/function1.php';
-            
-            getHand();
-            echo "<br>";
-            getHand();
-            echo "<br>";
-            getHand();
-            echo "<br>";
-            getHand();
-            
-            include 'functions/function2.php';
-            echo "<hr>";
-            $players = displayHands(getDeck());
-            displayWinners($players);
-            
+include 'functions/function1.php';
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,44 +12,20 @@
         <div class="silverjack">
             <header>Silverjack</header>
             <br>
-            <div class="p1">
-                <img src="img/moose.png" alt="Moose">
-                <h3>Player 1:Sophisticated Moose</h3>
-            </div>
-            <div class="p1points">
-                <h3>39</h3><br>
-            </div>
-            <div class="p2">
-                <img src="img/bear.png" alt="Bear">
-                <h3>Player 2:Fancy Bear</h3>
-            </div>
-            <div class="p2points">
-                <h3>40</h3><br>
-            </div>
-            <div class="p3">
-                <img src="img/unicorn.png" alt="Unicorn">
-                <h3>Player 3:Derped Unicorn</h3>
-            </div>
-            <div class="p3points">
-                <h3>41</h3><br>
-            </div>
-            <div class="p4">
-                <img src="img/spaceman.png" alt="Spaceman">
-                <h3>Player 4:Cool Spaceman</h3>
-            </div>
-            <div class="p4points">
-                <h3>42</h3><br>
-            </div>
-            <br>
             <div class="points">
-                <h1>Player 4 wins 69 points!</h1>
-                <h3>Elapsed time:</h3>
-                <h3>Matches played:</h3>
-                <h3>Average elapsed time:</h3>
+                <?php
+                    include 'functions/function2.php';
+                    echo "<hr>";
+                    $players = displayHands(getDeck());
+                    displayWinners($players);
+                ?>
                 <br>
                 <form id form> 
                     <input type="submit" name="play" class="button" value="Play Again">
                 </form>
+            </div>
+            <div id="elapsedTime">
+                <?= displayElapsedTime(); ?>
             </div>
         </div>
         <footer>
@@ -74,10 +36,6 @@
         </footer>
         
         <hr>
-        
-        <div id="elapsedTime">
-            <?= displayElapsedTime(); ?>
-        </div>
     </head>
     <body>
         

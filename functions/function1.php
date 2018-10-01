@@ -12,8 +12,6 @@ function getHand() {
         }
     }
     
-    // printCard();
-    
     $totalPoints = 0;
     
     while($totalPoints < 36){
@@ -25,13 +23,11 @@ function getHand() {
         $substring = substr($deck[$randomCard], 0, strpos($deck[$randomCard], ' '));
         $substring2 = substr($deck[$randomCard], (strpos($deck[$randomCard], ' ') + 1), strlen($deck[$randomCard]));
         
-        echo "<img src='cards/$substring/$substring2.png'/>";
+        echo "<img class='cards' src='cards/$substring/$substring2.png'/>";
         
         $totalPoints += $randomCard % 13 + 1;
         echo $totalPoints . " ";
     }
-    
-    echo "TOTAL POINTS EARNED :" . $totalPoints;
     
 }
 
@@ -40,10 +36,6 @@ function printCard(){
         global $deck;
         $substring = substr($deck[$i], 0, strpos($deck[$i], ' '));
         $substring2 = substr($deck[$i], (strpos($deck[$i], ' ') + 1), strlen($deck[$i]));
-        // echo $substring;
-        // echo $substring2;
-        
-        // echo "<img src='cards/$substring/$substring2.png'/>";
     }
 }
 

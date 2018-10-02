@@ -1,5 +1,5 @@
 body {
-    background-image: url("../img/background.jpeg");
+    background-image: url();
     background-repeat:no-repeat;
     background-size:cover;
 }
@@ -17,9 +17,10 @@ header {
     font-family: Comic Sans MS, cursive, sans-serif;
 }
 .p1, .p2, .p3, .p4 {
+    text-align:left;
     width: 700px;
+    float:left;
     font-family: Comic Sans MS, cursive, sans-serif;
-    margin:auto;
 }
 .p1points, .p2points, .p3points, .p4points {
     float:right;
@@ -28,7 +29,7 @@ header {
 .points {
     float:left;
 }
-.profile {
+img {
     border-radius: 50%;
     height: 100px;
 }
@@ -40,13 +41,5 @@ footer {
     clear: left;
     font-size: 13px;
     text-align:center;
-    color:white;
 }
-#logo {
-    height: 50px;
-    width: 50px;
-    float: center;
-}
-h3 {
-    color: white;    
-}
+
